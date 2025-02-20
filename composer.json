@@ -1,9 +1,0 @@
-{
-    "name": "fhoulette2023/docker-php",
-    "autoload": {
-        "psr-4": {
-            "Fhoulette2023\\DockerPhp\\": "src/"
-        }
-    },
-    "require": {}
-}
