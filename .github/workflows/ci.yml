@@ -27,3 +27,41 @@ jobs:
       run: |
         # Remplacez par votre commande pour exécuter les tests
         php -r "echo 'Tests exécutés';"
+        on:
+          push:
+            branches: [ main ]
+          pull_request:
+            branches: [ main ]
+        jobs:
+          test:
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@v2
+        
+              - name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                  php-version: '8.1'
+                  extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, json, libxml
+          build:
+            needs: test
+            runs-on: ubuntu-latest
+            steps:
+              - name: Mon premier job
+                run: echo "Démarrage du jobs"
+              - name: Mes premières instructions
+                run: ls
+              - name: Checkout code
+                uses: actions/checkout@v2
+              - name: Mes premières instructions
+                run: ls
+              - name: Build Docker image
+                run: docker build . --file Dockerfile --tag demo-app:$(date +%s)
+                # To use docker-compose
+              - uses: KengoTODA/actions-setup-docker-compose@v1
+                with:
+                 version: '2.14.2' # the full version of `docker-compose` command
+        
+              - name: Start containers
+                run: docker-compose up -d
+        
