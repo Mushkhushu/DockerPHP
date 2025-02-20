@@ -1,0 +1,29 @@
+name: CI for PHP Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 7.4
+
+    - name: Install Composer dependencies
+      run: |
+        curl -sS https://getcomposer.org/installer | php
+        php composer.phar install
+
+    - name: Run Tests
+      run: |
+        # Remplacez par votre commande pour exécuter les tests
+        php -r "echo 'Tests exécutés';"
