@@ -1,15 +1,27 @@
-version: '3.7'
-
+version: '3'
 services:
   web:
     build: .
     ports:
-      - "80:80"
+      - "8080:80"
+    environment:
+      - APP_ENV=development
     volumes:
       - .:/var/www/html
-    networks:
-      - app_network
+    depends_on:
+      - db
 
-networks:
-  app_network:
-    driver: bridge
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demo
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
