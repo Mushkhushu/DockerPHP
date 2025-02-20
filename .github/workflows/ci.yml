@@ -54,6 +54,7 @@ jobs:
         run: docker-compose up -d
         
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
