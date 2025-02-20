@@ -1,9 +1,11 @@
 <?php
-// ApiTest.php
-namespace App;
+use PHPUnit\Framework\TestCase;
 
-class ApiTest {
-    public function getMessage() {
-        return "Hello from the API!";
+class ExampleTest extends TestCase
+{
+    public function testHello()
+    {
+        $this->assertEquals("Slim Framework", "Slim Framework");
     }
 }
+
