@@ -1,18 +1,9 @@
 {
-    "name": "monprojet/php",
-    "description": "Un projet PHP avec Docker",
-    "require": {
-        "php": "^7.4",
-        "monolog/monolog": "^2.0"
-    },
+    "name": "fhoulette2023/docker-php",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Fhoulette2023\\DockerPhp\\": "src/"
         }
     },
-    "scripts": {
-        "post-install-cmd": [
-            "echo 'Composer installé !'"
-        ]
-    }
+    "require": {}
 }
