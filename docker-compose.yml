@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  php-apache:
+    build: .
+    ports:
+      - "8080:80"  # Mappe le port 80 du conteneur au port 8080 de votre machine
+    volumes:
+      - .:/var/www/html  # Monte le répertoire local dans le conteneur
+    container_name: php-apache-container
+    command: ["apache2-foreground"]
